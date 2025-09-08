@@ -11,9 +11,4 @@ public class Album
         DataLancamento = dataLancamento;
         ArtistaId = artistaId;
     }
-    public Album() // constr vazio
-    {
-        
-    }
-
 }

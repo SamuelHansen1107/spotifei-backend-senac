@@ -14,9 +14,4 @@ public class Musica
         Artista = artista;
         Album = album;
     }
-
-    public Musica()
-    {
-
-    }
 }

@@ -1,4 +1,9 @@
-public class Menus
+// Nesse arquivo, foi colocado tudo em comentário, 
+// pois as entidades/classes do Model vão somente atributos/propriedades
+// antes de apagar tudo, foi só colocado em comentário para aproveitar algo
+
+
+/* public class Menus
 {
     public void MenuCadastro()
     {
@@ -122,4 +127,4 @@ public class Menus
         Console.WriteLine("\nPressione qualquer tecla para voltar ao menu...");
         Console.ReadKey();
     }
-}
+} */

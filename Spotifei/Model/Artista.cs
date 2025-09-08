@@ -9,8 +9,4 @@ public class Artista
         Nome = nome;
         Genero = genero;
     }
-    public Artista() // contr vazio 
-    {
-        
-    }
 }
