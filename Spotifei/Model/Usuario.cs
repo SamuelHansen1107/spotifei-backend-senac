@@ -19,8 +19,4 @@ public class Usuario
         
     }
 
-    public void ExibirInfo()
-    {
-        Console.WriteLine($"Usuario: {Nome}, Email: {Email}, Data de Nascimento: {DataNascimento:dd/MM/yyyy}");
-    }
 }
