@@ -9,12 +9,6 @@ public class Playlist
         Musicas = new List<Musica>();
     }
 
-    public Playlist()
-    {
-        Nome = "Minha Playlist";
-        Musicas = new List<Musica>();
-    }
-
     public void AdicionarMusica(Musica musica)
     {
         if (!Musicas.Any(m => m.Id == musica.Id))
