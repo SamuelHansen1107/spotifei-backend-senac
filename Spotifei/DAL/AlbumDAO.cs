@@ -2,7 +2,7 @@
 public class AlbumDAO : IDAO<Album>
 {
     private static List<Album> albums = new List<Album>();
-    public void Atualizar(Album objeto)
+    public void Atualizar(Album objeto,int id)
     {
         throw new NotImplementedException();
     }

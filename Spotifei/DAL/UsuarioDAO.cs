@@ -2,9 +2,10 @@
 public class UsuarioDAO : IDAO<Usuario>
 {
     private List<Usuario> usuarios = new List<Usuario>();
-    public void Atualizar(Usuario objeto)
+    public void Atualizar(Usuario objeto,int id)
     {
-        throw new NotImplementedException();
+        usuarios.Remove(usuarios.Single(item => item.Id == id));
+        usuarios.Add(objeto);
     }
 
     public void Cadastrar(Usuario objeto)
@@ -19,7 +20,7 @@ public class UsuarioDAO : IDAO<Usuario>
 
     public Usuario Listar(int id)
     {
-        throw new NotImplementedException();
+        return usuarios.SingleOrDefault(item => item.Id == id);
     }
 
     public List<Usuario> ListarTodos()
