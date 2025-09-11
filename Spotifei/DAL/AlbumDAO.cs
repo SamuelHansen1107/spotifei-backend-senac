@@ -14,12 +14,12 @@ public class AlbumDAO : IDAO<Album>
 
     public void Excluir(int id)
     {
-        throw new NotImplementedException();
+        albums.Remove(albums.Single(a => a.Id == id));
     }
 
     public Album Listar(int id)
     {
-        throw new NotImplementedException();
+        return albums.SingleOrDefault(a => a.Id == id);
     }
 
     public List<Album> ListarTodos()
