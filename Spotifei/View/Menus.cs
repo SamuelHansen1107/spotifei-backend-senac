@@ -65,9 +65,9 @@ public class Menus
 
     public void CriarPlaylist(List<Musica> listaDeMusicas, List<Musica> playlist)
     {
-        bool loop3 = true;
+        bool loop = true;
 
-        while (loop3)
+        while (loop)
         {
             Console.Clear();
             Console.WriteLine("===============//================");
@@ -84,7 +84,7 @@ public class Menus
 
             if (numeroEscolhido == 0)
             {
-                loop3 = false;
+                loop = false;
                 break;
             }
 
