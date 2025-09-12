@@ -1,4 +1,4 @@
-public class ServicoUsuario
+/* public class ServicoUsuario
     {
         private readonly Menus menu;
         private readonly Playlist playlist;
@@ -206,4 +206,4 @@ public class ServicoUsuario
             if (msg != null) Console.Write(msg);
             return int.TryParse(Console.ReadLine(), out int val) ? val : -1;
         }
-    }
+    } */
