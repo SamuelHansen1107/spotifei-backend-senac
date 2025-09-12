@@ -1,8 +1,8 @@
-
 public class PlaylistDAO : IDAO<Playlist>
 {
     private static List<Playlist> playlists = new List<Playlist>();
-    public void Atualizar(Playlist objeto)
+    public List<Musica> Musicas { get; set; }
+    public void Atualizar(Playlist objeto,int id)
     {
         throw new NotImplementedException();
     }

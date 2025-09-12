@@ -2,7 +2,7 @@
 public class ArtistaDAO : IDAO<Artista>
 {
     private static List<Artista> artistas = new List<Artista>();
-    public void Atualizar(Artista objeto)
+    public void Atualizar(Artista objeto,int id)
     {
         throw new NotImplementedException();
     }
@@ -14,12 +14,12 @@ public class ArtistaDAO : IDAO<Artista>
 
     public void Excluir(int id)
     {
-        throw new NotImplementedException();
+        artistas.Remove(artistas.Single(a => a.Id == id));
     }
 
     public Artista Listar(int id)
     {
-        throw new NotImplementedException();
+        return artistas.SingleOrDefault(a => a.Id == id);
     }
 
     public List<Artista> ListarTodos()
