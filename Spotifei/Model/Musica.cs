@@ -6,6 +6,7 @@ public class Musica
     public Artista Artista { get; set; }
     public Album Album { get; set; }
     public int AlbumId { get; set; }
+    public int ArtistaId { get; set; }
 
     public Musica(string titulo, TimeSpan duracao, Artista artista, Album album)
     {
