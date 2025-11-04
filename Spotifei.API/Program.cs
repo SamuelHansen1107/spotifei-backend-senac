@@ -7,8 +7,8 @@ var musicaGroup = app.MapGroup("/musicas");
 
 // ========== //
 
-app.MapGet("/", () =>
+musicaGroup.MapGet("/", () =>
 {
     List<Musica> musicas;
     musicas = new MusicaController().
-}
+});
