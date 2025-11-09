@@ -7,6 +7,8 @@ public class SpotifeyContext : DbContext
     public DbSet<Artista> Artistas { get; set; }
     public DbSet<Album> Albuns { get; set; }
     public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Playlist> Playlists { get; set; }
+    public DbSet<PlaylistMusica> PlaylistMusicas { get; set; }
 
     string stringConexao = "Server=localhost;Port=3306;Database=Spotifei;Uid=root;Pwd=S&nac2024;";
 
@@ -49,7 +51,6 @@ public class SpotifeyContext : DbContext
                 ArtistaId = 1
             }
         );
-
         builder.Entity<Usuario>().HasData
         (
             new Usuario()
@@ -59,6 +60,25 @@ public class SpotifeyContext : DbContext
                 Email = "teste1@spotifei.com",
                 Senha = "senha123",
                 DataNascimento = new DateTime(2001,12,3)
+            }
+        );
+        builder.Entity<Playlist>().HasData
+        (
+            new Playlist()
+            {
+                Id = 1,
+                Nome = "playlist Exemplo",
+                IdUsuario = 1,
+                DataCriacao = new DateTime(2025, 1, 30)
+            }
+        );
+        builder.Entity<PlaylistMusica>().HasData
+        (
+            new PlaylistMusica()
+            {
+                Id = 1,
+                IdPlaylist = 1,
+                IdMusica = 1
             }
         );
     }

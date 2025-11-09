@@ -33,6 +33,6 @@ class PlaylistController
     public void ListarPlaylist(int id)
     {
         PlaylistDAO playlistDAO = new PlaylistDAO();
-        playlistDAO.Listar(id);
+        playlistDAO.ListarPorId(id);
     }
 }
