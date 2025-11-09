@@ -2,7 +2,7 @@ public class PlaylistDAO : IDAO<Playlist>
 {
     private static List<Playlist> playlists = new List<Playlist>();
     public List<Musica> Musicas { get; set; }
-    public void Atualizar(Playlist objeto,int id)
+    public void Atualizar(Playlist objeto)
     {
         throw new NotImplementedException();
     }
@@ -12,12 +12,12 @@ public class PlaylistDAO : IDAO<Playlist>
         playlists.Add(objeto);
     }
 
-    public void Excluir(int id)
+    public void Excluir(Playlist objeto)
     {
         throw new NotImplementedException();
     }
 
-    public Playlist Listar(int id)
+    public Playlist ListarPorId(int id)
     {
         throw new NotImplementedException();
     }

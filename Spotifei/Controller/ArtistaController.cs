@@ -1,39 +1,44 @@
-class ArtistaController
+public class ArtistaController
 {
+    private ArtistaDAO artistaDAO = new ArtistaDAO();
     public bool VerificarSeExisteArtista(int id)
     {
         ArtistaDAO dao = new ArtistaDAO();
-        var artista = dao.Listar(id);
+        var artista = dao.ListarPorId(id);
         return artista != null;
     }
 
     public void AdicionarArtista(Artista artista)
     {
-        ArtistaDAO dao = new ArtistaDAO();
-        dao.Cadastrar(artista);
+        artistaDAO.Cadastrar(artista);
     }
 
-    public void RemoverArtista(int id)
+    public void RemoverArtista(Artista artista)
     {
-        ArtistaDAO dao = new ArtistaDAO();
-        dao.Excluir(id);
+        artistaDAO.Excluir(artista);
     }
 
-    public void AtualizarArtista(Artista artista, int id)
+    public void AtualizarArtista(Artista artista)
     {
-        ArtistaDAO dao = new ArtistaDAO();
-        dao.Atualizar(artista, id);
+        artistaDAO.Atualizar(artista);
+    }
+    
+    public List<Artista> ListarTodosArtistas()
+    {
+        List<Artista> artistas = new ArtistaDAO().ListarTodos();
+        return artistas;
     }
 
-    public void ListarTodosArtistas()
+    public Artista ListarArtista(int id)
     {
-        ArtistaDAO dao = new ArtistaDAO();
-        dao.ListarTodos();
-    }
-
-    public void ListarArtista(int id)
-    {
-        ArtistaDAO dao = new ArtistaDAO();
-        dao.Listar(id);
+        Artista artista = artistaDAO.ListarPorId(id);
+        if (artista != null)
+        {
+            return artista;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

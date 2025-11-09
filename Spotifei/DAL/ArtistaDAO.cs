@@ -1,29 +1,33 @@
 
 public class ArtistaDAO : IDAO<Artista>
 {
-    private static List<Artista> artistas = new List<Artista>();
-    public void Atualizar(Artista objeto,int id)
+    private SpotifeyContext context = new SpotifeyContext();
+    public void Atualizar(Artista objeto)
     {
-        throw new NotImplementedException();
+        context.Artistas.Update(objeto);
+        context.SaveChanges();
     }
 
     public void Cadastrar(Artista objeto)
     {
-        artistas.Add(objeto);
+        context.Artistas.Add(objeto);
+        context.SaveChanges();
     }
 
-    public void Excluir(int id)
+    public void Excluir(Artista objeto)
     {
-        artistas.Remove(artistas.Single(a => a.Id == id));
+        context.Artistas.Remove(objeto);
+        context.SaveChanges();
     }
 
-    public Artista Listar(int id)
+    public Artista ListarPorId(int id)
     {
-        return artistas.SingleOrDefault(a => a.Id == id);
+        context.Artistas.Find(id);
+        return context.Artistas.FirstOrDefault(a => a.Id == id);
     }
 
     public List<Artista> ListarTodos()
     {
-        return artistas;
+        return context.Artistas.ToList();
     }
 }

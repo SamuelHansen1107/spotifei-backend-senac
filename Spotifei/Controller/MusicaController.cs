@@ -1,5 +1,6 @@
 public class MusicaController
 {
+    private MusicaDAO musicaDAO = new MusicaDAO();
     public bool VerificarSeExisteMusica(int id)
     {
         List<Musica> musicas = new List<Musica>();
@@ -11,28 +12,31 @@ public class MusicaController
     }
     public void AdicionarMusica(Musica musica)
     {
-        List<Musica> musicas = new List<Musica>();
-        musicas.Add(musica);
+        musicaDAO.Cadastrar(musica);
     }
     public void RemoverMusica(Musica musica)
     {
-        List<Musica> musicas = new List<Musica>();
-        musicas.Remove(musica);
+        musicaDAO.Excluir(musica);
     }
     public void AtualizarMusica(Musica musica)
     {
-        List<Musica> musicas = new List<Musica>();
-        musicas.Remove(musica);
-        musicas.Add(musica);
+        musicaDAO.Atualizar(musica);
     }
-    public void ListarTodasMusicas()
+    public List<Musica>ListarTodasMusicas()
     {
-        MusicaDAO musicaDAO = new MusicaDAO();
-        musicaDAO.ListarTodos();
+        List<Musica> musicas = new MusicaDAO().ListarTodos();
+        return musicas;
     }
-    public Musica ListarMusica(int id)
+    public Musica ListarMusicaPorId(int id)
     {
-        MusicaDAO musicaDAO = new MusicaDAO();
-        return musicaDAO.Listar(id);
+        Musica musica = musicaDAO.ListarPorId(id);
+        if (musica != null)
+        {
+            return musica;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

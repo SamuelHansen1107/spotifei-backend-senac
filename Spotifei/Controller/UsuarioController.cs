@@ -1,34 +1,39 @@
 class UsuarioController
 {
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
     public bool VerificarSeExisteUsuario(int id)
     {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        var usuario = usuarioDAO.Listar(id);
+        var usuario = usuarioDAO.ListarPorId(id);
         return usuario != null; // vai verificar se existe o usuario, caso exista ele retorna o usuario
     }
     public void AdicionarUsuario(Usuario usuario)
     {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.Cadastrar(usuario);
     }
-    public void RemoverUsuario(int id)
+    public void RemoverUsuario(Usuario usuario)
     {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.Excluir(id);
+        usuarioDAO.Excluir(usuario);
     }
-    public void AtualizarUsuario(Usuario usuario, int id)
+    public void AtualizarUsuario(Usuario usuario)
     {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.Atualizar(usuario, id);
+        usuarioDAO.Atualizar(usuario);
     }
-    public void ListarTodosUsuarios()
+    public List<Usuario> ListarTodosUsuarios()
     {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.ListarTodos();
+        List<Usuario> usuarios = new UsuarioDAO().ListarTodos();
+        return usuarios;
     }
-    public void ListarUsuario(int id)
+    public Usuario ListarUsuario(int id)
     {
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.Listar(id);
+        Usuario usuario = usuarioDAO.ListarPorId(id);
+        if (usuario != null)
+        {
+            return usuario;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

@@ -1,31 +1,32 @@
 
 public class MusicaDAO : IDAO<Musica>
 {
-    private static List<Musica> Musicas = new List<Musica>();
-    public void Atualizar(Musica objeto,int id)
+    private SpotifeyContext context = new SpotifeyContext();
+    public void Atualizar(Musica objeto)
     {
-        throw new NotImplementedException();
+        context.Musicas.Update(objeto);
+        context.SaveChanges();
     }
 
     public void Cadastrar(Musica objeto)
     {
-        Musicas.Add(objeto);
+        context.Musicas.Add(objeto);
+        context.SaveChanges();
     }
 
-    public void Excluir(int id)
+    public void Excluir(Musica objeto)
     {
-    
-        Musicas.Remove(Musicas.Single(item => item.Id == id));
-    
+        context.Musicas.Remove(objeto);
     }
 
-    public Musica Listar(int id)
+    public Musica ListarPorId(int id)
     {
-        throw new NotImplementedException();
+        context.Musicas.Find(id);
+        return context.Musicas.FirstOrDefault(m => m.Id == id);
     }
 
     public List<Musica> ListarTodos()
     {
-        return Musicas;
+        return context.Musicas.ToList();
     }
 }
