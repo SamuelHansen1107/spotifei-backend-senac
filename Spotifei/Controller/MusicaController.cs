@@ -1,4 +1,4 @@
-class MusicaController
+public class MusicaController
 {
     public bool VerificarSeExisteMusica(int id)
     {
