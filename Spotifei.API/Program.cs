@@ -7,8 +7,11 @@ var musicaGroup = app.MapGroup("/musicas");
 
 // ========== //
 
-app.MapGet("/", () =>
+musicaGroup.MapGet("/", () =>
 {
     List<Musica> musicas;
-    musicas = new MusicaController().
-}
+    musicas = new MusicaController().ListarTodasMusicas();
+    return Results.Ok(musicas);
+});
+
+app.Run();
