@@ -3,8 +3,7 @@ class AlbumController
     private AlbumDAO albumDAO = new AlbumDAO();
     public bool VerificarSeExisteAlbum(int id)
     {
-        AlbumDAO dao = new AlbumDAO();
-        var album = dao.ListarPorId(id);
+        var album = albumDAO.ListarPorId(id);
         return album != null;
     }
 
@@ -25,11 +24,10 @@ class AlbumController
 
     public List<Album> ListarTodosAlbums(int id)
     {
-        List<Album> albums = new AlbumDAO().ListarTodos();
-        return albums;
+        return albumDAO.ListarTodos();
     }
 
-    public Album ListarAlbum(int id)
+    public Album? ListarAlbum(int id)
     {
         Album album = albumDAO.ListarPorId(id);
         if (album != null)

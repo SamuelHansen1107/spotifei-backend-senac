@@ -17,12 +17,14 @@ public class MusicaDAO : IDAO<Musica>
     public void Excluir(Musica objeto)
     {
         context.Musicas.Remove(objeto);
+        context.SaveChanges();
     }
 
     public Musica ListarPorId(int id)
     {
-        context.Musicas.Find(id);
-        return context.Musicas.FirstOrDefault(m => m.Id == id);
+        Musica? musica = null;
+        musica = context.Musicas.FirstOrDefault(m => m.Id == id);
+        return musica;
     }
 
     public List<Musica> ListarTodos()

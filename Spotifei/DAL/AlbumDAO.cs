@@ -22,8 +22,9 @@ public class AlbumDAO : IDAO<Album>
 
     public Album ListarPorId(int id)
     {
-        context.Albuns.Find(id);
-        return context.Albuns.FirstOrDefault(a => a.Id == id);
+        Album? album = null;
+        album = context.Albuns.FirstOrDefault(a => a.Id == id);
+        return album;
     }
 
     public List<Album> ListarTodos()

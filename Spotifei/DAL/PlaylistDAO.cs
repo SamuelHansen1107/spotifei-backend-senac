@@ -16,12 +16,14 @@ public class PlaylistDAO : IDAO<Playlist>
     public void Excluir(Playlist objeto)
     {
         context.Playlists.Remove(objeto);
+        context.SaveChanges();
     }
 
     public Playlist ListarPorId(int id)
     {
-        context.Musicas.Find(id);
-        return context.Playlists.FirstOrDefault(p => p.Id == id);
+        Playlist? playlist = null;
+        playlist = context.Playlists.FirstOrDefault(p => p.Id == id);
+        return playlist;
     }
 
     public List<Playlist> ListarTodos()

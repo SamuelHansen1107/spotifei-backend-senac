@@ -22,8 +22,9 @@ public class ArtistaDAO : IDAO<Artista>
 
     public Artista ListarPorId(int id)
     {
-        context.Artistas.Find(id);
-        return context.Artistas.FirstOrDefault(a => a.Id == id);
+        Artista? artista = null;
+        artista = context.Artistas.FirstOrDefault(a => a.Id == id);
+        return artista;
     }
 
     public List<Artista> ListarTodos()

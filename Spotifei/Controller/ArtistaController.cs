@@ -3,8 +3,7 @@ public class ArtistaController
     private ArtistaDAO artistaDAO = new ArtistaDAO();
     public bool VerificarSeExisteArtista(int id)
     {
-        ArtistaDAO dao = new ArtistaDAO();
-        var artista = dao.ListarPorId(id);
+        var artista = artistaDAO.ListarPorId(id);
         return artista != null;
     }
 
@@ -25,11 +24,10 @@ public class ArtistaController
     
     public List<Artista> ListarTodosArtistas()
     {
-        List<Artista> artistas = new ArtistaDAO().ListarTodos();
-        return artistas;
+        return artistaDAO.ListarTodos();
     }
 
-    public Artista ListarArtista(int id)
+    public Artista? ListarArtista(int id)
     {
         Artista artista = artistaDAO.ListarPorId(id);
         if (artista != null)

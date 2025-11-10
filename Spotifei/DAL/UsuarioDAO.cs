@@ -22,8 +22,9 @@ public class UsuarioDAO : IDAO<Usuario>
 
     public Usuario ListarPorId(int id)
     {
-        context.Usuarios.Find(id);
-        return context.Usuarios.FirstOrDefault(u => u.Id == id);
+        Usuario? usuario = null;
+        usuario = context.Usuarios.FirstOrDefault(u => u.Id == id);
+        return usuario;
     }
 
     public List<Usuario> ListarTodos()
