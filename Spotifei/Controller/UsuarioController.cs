@@ -24,7 +24,7 @@ class UsuarioController
         List<Usuario> usuarios = new UsuarioDAO().ListarTodos();
         return usuarios;
     }
-    public Usuario ListarUsuario(int id)
+    public Usuario? ListarUsuario(int id)
     {
         Usuario usuario = usuarioDAO.ListarPorId(id);
         if (usuario != null)
