@@ -27,15 +27,44 @@ musicaGroup.MapPut("/", ([FromBody] Musica musica) =>
 // ========== //
 musicaGroup.MapDelete("/", ([FromBody] Musica musica) =>
 {
-    if (musica.ArtistaId != 1)
-    {
-        return Results.Forbid();
-    }
-    else
-    {
-        new MusicaController().RemoverMusica(musica);
-        return Results.Ok("Música removida com sucesso!");
-    }
+    new MusicaController().RemoverMusica(musica);
+    return Results.Ok("Música removida com sucesso!");
 });
+
+// ========== //
+// ========== //
+// ========== //
+
+var artistaGroup = app.MapGroup("/artistas");
+
+// ========== //
+
+artistaGroup.MapGet("/", () =>
+{
+    List<Artista> artistas;
+    artistas = new ArtistaController().ListarTodosArtistas();
+    return Results.Ok(artistas);
+});
+// ========== //
+artistaGroup.MapPost("/", ([FromBody] Artista artista) =>
+{
+    new ArtistaController().AdicionarArtista(artista);
+    return Results.Ok("Artista adicionado com sucesso!");
+});
+// ========== //
+artistaGroup.MapPut("/", ([FromBody] Artista artista) =>
+{
+    new ArtistaController().AtualizarArtista(artista);
+    return Results.Ok("Artista atualizado com sucesso!");
+});
+// ========== //
+artistaGroup.MapDelete("/", ([FromBody] Artista artista) =>
+{
+    new ArtistaController().RemoverArtista(artista);
+    return Results.Ok("Artista removido com sucesso!");
+});
+
+// ========== //
+// ========== //
 // ========== //
 app.Run();
