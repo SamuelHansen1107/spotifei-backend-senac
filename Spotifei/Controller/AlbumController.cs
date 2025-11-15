@@ -1,4 +1,4 @@
-class AlbumController
+public class AlbumController
 {
     private AlbumDAO albumDAO = new AlbumDAO();
     public bool VerificarSeExisteAlbum(int id)
@@ -22,7 +22,7 @@ class AlbumController
         albumDAO.Atualizar(album);
     }
 
-    public List<Album> ListarTodosAlbums(int id)
+    public List<Album> ListarTodosAlbuns()
     {
         return albumDAO.ListarTodos();
     }

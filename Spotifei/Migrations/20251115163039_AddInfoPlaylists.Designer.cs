@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Spotifei.Migrations
 {
     [DbContext(typeof(SpotifeyContext))]
-    partial class SpotifeyContextModelSnapshot : ModelSnapshot
+    [Migration("20251115163039_AddInfoPlaylists")]
+    partial class AddInfoPlaylists
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,10 +176,10 @@ namespace Spotifei.Migrations
                     b.Property<int>("IdPlaylist")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MusicaId")
+                    b.Property<int>("MusicaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PlaylistId")
+                    b.Property<int>("PlaylistId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -186,14 +189,6 @@ namespace Spotifei.Migrations
                     b.HasIndex("PlaylistId");
 
                     b.ToTable("PlaylistMusicas");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IdMusica = 1,
-                            IdPlaylist = 1
-                        });
                 });
 
             modelBuilder.Entity("Usuario", b =>
@@ -266,11 +261,15 @@ namespace Spotifei.Migrations
                 {
                     b.HasOne("Musica", "Musica")
                         .WithMany()
-                        .HasForeignKey("MusicaId");
+                        .HasForeignKey("MusicaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Playlist", "Playlist")
                         .WithMany()
-                        .HasForeignKey("PlaylistId");
+                        .HasForeignKey("PlaylistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Musica");
 

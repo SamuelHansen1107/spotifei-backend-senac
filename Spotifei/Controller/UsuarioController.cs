@@ -1,4 +1,4 @@
-class UsuarioController
+public class UsuarioController
 {
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     public bool VerificarSeExisteUsuario(int id)

@@ -1,4 +1,4 @@
-class PlaylistController
+public class PlaylistController
 {
     private PlaylistDAO playlistDAO = new PlaylistDAO();
     public void AdicionarPlaylist(Playlist playlist)
