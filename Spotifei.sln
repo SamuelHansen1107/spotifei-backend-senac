@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotifei", "Spotifei\Spotifei.csproj", "{502CF0ED-BD19-410D-990D-B88C0C9FD689}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotifei.API", "Spotifei.API\Spotifei.API.csproj", "{B586BC4D-38DF-4CE7-812C-6291AA2D8FF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{502CF0ED-BD19-410D-990D-B88C0C9FD689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{502CF0ED-BD19-410D-990D-B88C0C9FD689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{502CF0ED-BD19-410D-990D-B88C0C9FD689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B586BC4D-38DF-4CE7-812C-6291AA2D8FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B586BC4D-38DF-4CE7-812C-6291AA2D8FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B586BC4D-38DF-4CE7-812C-6291AA2D8FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B586BC4D-38DF-4CE7-812C-6291AA2D8FF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

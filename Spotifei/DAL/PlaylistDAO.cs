@@ -1,29 +1,33 @@
 public class PlaylistDAO : IDAO<Playlist>
 {
-    private static List<Playlist> playlists = new List<Playlist>();
-    public List<Musica> Musicas { get; set; }
-    public void Atualizar(Playlist objeto,int id)
+    private SpotifeyContext context = new SpotifeyContext();
+    public void Atualizar(Playlist objeto)
     {
-        throw new NotImplementedException();
+        context.Playlists.Update(objeto);
+        context.SaveChanges();
     }
 
     public void Cadastrar(Playlist objeto)
     {
-        playlists.Add(objeto);
+        context.Playlists.Add(objeto);
+        context.SaveChanges();
     }
 
-    public void Excluir(int id)
+    public void Excluir(Playlist objeto)
     {
-        throw new NotImplementedException();
+        context.Playlists.Remove(objeto);
+        context.SaveChanges();
     }
 
-    public Playlist Listar(int id)
+    public Playlist ListarPorId(int id)
     {
-        throw new NotImplementedException();
+        Playlist? playlist = null;
+        playlist = context.Playlists.FirstOrDefault(p => p.Id == id);
+        return playlist;
     }
 
     public List<Playlist> ListarTodos()
     {
-        return playlists;
+        return context.Playlists.ToList();
     }
 }

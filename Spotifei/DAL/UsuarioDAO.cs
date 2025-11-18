@@ -1,30 +1,34 @@
 
 public class UsuarioDAO : IDAO<Usuario>
 {
-    private List<Usuario> usuarios = new List<Usuario>();
-    public void Atualizar(Usuario objeto,int id)
+    private SpotifeyContext context = new SpotifeyContext();
+    public void Atualizar(Usuario objeto)
     {
-        usuarios.Remove(usuarios.Single(item => item.Id == id));
-        usuarios.Add(objeto);
+        context.Usuarios.Update(objeto);
+        context.SaveChanges();
     }
 
     public void Cadastrar(Usuario objeto)
     {
-        usuarios.Add(objeto);
+        context.Usuarios.Add(objeto);
+        context.SaveChanges();
     }
 
-    public void Excluir(int id)
+    public void Excluir(Usuario objeto)
     {
-        usuarios.Remove(usuarios.Single(item => item.Id == id));
+        context.Usuarios.Remove(objeto);
+        context.SaveChanges();
     }
 
-    public Usuario Listar(int id)
+    public Usuario ListarPorId(int id)
     {
-        return usuarios.SingleOrDefault(item => item.Id == id);
+        Usuario? usuario = null;
+        usuario = context.Usuarios.FirstOrDefault(u => u.Id == id);
+        return usuario;
     }
 
     public List<Usuario> ListarTodos()
     {
-        return usuarios;
+        return context.Usuarios.ToList();
     }
 }

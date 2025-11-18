@@ -1,39 +1,42 @@
-class AlbumController
+public class AlbumController
 {
+    private AlbumDAO albumDAO = new AlbumDAO();
     public bool VerificarSeExisteAlbum(int id)
     {
-        AlbumDAO dao = new AlbumDAO();
-        var album = dao.Listar(id);
+        var album = albumDAO.ListarPorId(id);
         return album != null;
     }
 
     public void AdicionarAlbum(Album album)
     {
-        AlbumDAO dao = new AlbumDAO();
-        dao.Cadastrar(album);
+        albumDAO.Cadastrar(album);
     }
 
-    public void RemoverAlbum(int id)
+    public void RemoverAlbum(Album album)
     {
-        AlbumDAO dao = new AlbumDAO();
-        dao.Excluir(id);
+       albumDAO.Excluir(album);
     }
 
-    public void AtualizarAlbum(Album album, int id)
+    public void AtualizarAlbum(Album album)
     {
-        AlbumDAO dao = new AlbumDAO();
-        dao.Atualizar(album, id);
+        albumDAO.Atualizar(album);
     }
 
-    public void ListarTodosAlbums(int id)
+    public List<Album> ListarTodosAlbuns()
     {
-        AlbumDAO dao = new AlbumDAO();
-        dao.ListarTodos();
+        return albumDAO.ListarTodos();
     }
 
-    public void ListarAlbum(int id)
+    public Album? ListarAlbum(int id)
     {
-        AlbumDAO dao = new AlbumDAO();
-        dao.Listar(id);
+        Album album = albumDAO.ListarPorId(id);
+        if (album != null)
+        {
+            return album;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

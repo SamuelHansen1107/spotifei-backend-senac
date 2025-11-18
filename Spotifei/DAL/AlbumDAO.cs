@@ -1,29 +1,34 @@
 
 public class AlbumDAO : IDAO<Album>
 {
-    private static List<Album> albums = new List<Album>();
-    public void Atualizar(Album objeto,int id)
+    private SpotifeyContext context = new SpotifeyContext();
+    public void Atualizar(Album objeto)
     {
-        throw new NotImplementedException();
+        context.Albuns.Update(objeto);
+        context.SaveChanges();
     }
 
     public void Cadastrar(Album objeto)
     {
-        albums.Add(objeto);
+        context.Albuns.Add(objeto);
+        context.SaveChanges();
     }
 
-    public void Excluir(int id)
+    public void Excluir(Album objeto)
     {
-        albums.Remove(albums.Single(a => a.Id == id));
+        context.Albuns.Remove(objeto);
+        context.SaveChanges();
     }
 
-    public Album Listar(int id)
+    public Album ListarPorId(int id)
     {
-        return albums.SingleOrDefault(a => a.Id == id);
+        Album? album = null;
+        album = context.Albuns.FirstOrDefault(a => a.Id == id);
+        return album;
     }
 
     public List<Album> ListarTodos()
     {
-        return albums;
+        return context.Albuns.ToList();
     }
 }

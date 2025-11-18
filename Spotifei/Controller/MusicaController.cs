@@ -1,38 +1,33 @@
-class MusicaController
+public class MusicaController
 {
-    public bool VerificarSeExisteMusica(int id)
-    {
-        List<Musica> musicas = new List<Musica>();
-        if (musicas.Count != 0)
-        {
-            return true;
-        }
-        return false;
-    }
+    private MusicaDAO musicaDAO = new MusicaDAO();
+
     public void AdicionarMusica(Musica musica)
     {
-        List<Musica> musicas = new List<Musica>();
-        musicas.Add(musica);
+        musicaDAO.Cadastrar(musica);
     }
     public void RemoverMusica(Musica musica)
     {
-        List<Musica> musicas = new List<Musica>();
-        musicas.Remove(musica);
+        musicaDAO.Excluir(musica);
     }
     public void AtualizarMusica(Musica musica)
     {
-        List<Musica> musicas = new List<Musica>();
-        musicas.Remove(musica);
-        musicas.Add(musica);
+        musicaDAO.Atualizar(musica);
     }
-    public void ListarTodasMusicas()
+    public List<Musica>ListarTodasMusicas()
     {
-        MusicaDAO musicaDAO = new MusicaDAO();
-        musicaDAO.ListarTodos();
+        return musicaDAO.ListarTodos();
     }
-    public Musica ListarMusica(int id)
+    public Musica? ListarMusicaPorId(int id)
     {
-        MusicaDAO musicaDAO = new MusicaDAO();
-        return musicaDAO.Listar(id);
+        Musica musica = musicaDAO.ListarPorId(id);
+        if (musica != null)
+        {
+            return musica;
+        }
+        else
+        {
+            return null;
+        }
     }
 }
